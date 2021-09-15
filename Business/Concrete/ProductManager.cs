@@ -16,18 +16,19 @@ namespace Business.Concrete
     public class ProductManager : IProductService
     {
         IProductDal _productDal;
-
-        public ProductManager(IProductDal productDal)
+        int sayi1;
+        public ProductManager(IProductDal productDal)//EfProductDal
         {
             _productDal = productDal;
+           
         }
 
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
             //business codes 
-
-
+            
+            
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
         }
